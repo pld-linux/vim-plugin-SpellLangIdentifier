@@ -1,0 +1,22 @@
+--- spelllangidentifier-1.0.0/LanguageIdentifier.sh.orig	2021-02-16 12:18:50.323362430 +0100
++++ spelllangidentifier-1.0.0/LanguageIdentifier.sh	2021-02-16 12:20:17.002886928 +0100
+@@ -102,10 +102,6 @@
+ done
+ ################################################################################
+ 
+-# Try to guess the mguesser's maps directory
+-[ -z "$MGMAPS" ] && MGMAPS="$(dirname "$MG")/maps"
+-
+-
+ TMP="`mktemp -d`"
+ FILE="$TMP/sli-$FILE"
+ 
+@@ -141,7 +137,7 @@
+ #  2) all punctuation chars are transformed into single spaces, which are then squeezed and
+ #     all characters that are not letters or spaces are deleted.
+ #  3) the resulting content are then given to 'mguesser'
+-CMD="$FILTER 2>/dev/null | tr -d '[:digit:][:cntrl:]' | tr '[:punct:][:space:]' ' ' | tr -s ' ' | "$MG" -d "$MGMAPS" - 2>/dev/null"
++CMD="$FILTER 2>/dev/null | tr -d '[:digit:][:cntrl:]' | tr '[:punct:][:space:]' ' ' | tr -s ' ' | "$MG" ${MGMAPS:+-d "$MGMAPS"} - 2>/dev/null"
+ 
+ # Evaluate the assembled command and check if it has succeeded
+ OUT="`eval "$CMD" 2>/dev/null`"
