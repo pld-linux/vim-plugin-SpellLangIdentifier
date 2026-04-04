@@ -2,7 +2,7 @@
 Summary:	Vim plugin: Automatically identify buffer's language and set the spell lang
 Name:		vim-plugin-%{plugin}
 Version:	1.0.0
-Release:	1
+Release:	2
 License:	GPL v3+
 Group:		Applications/Editors/Vim
 Source0:	https://github.com/daaugusto/spelllangidentifier/archive/v%{version}/sli-%{version}.tar.gz
